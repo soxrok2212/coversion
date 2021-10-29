@@ -1,4 +1,5 @@
 import os
+import netifaces
 from scapy.all import *
 from networks import *
 
@@ -40,3 +41,7 @@ def scan_channels(interface, bssid, essid, chan, networks):
         except Exception:
             pass
     return networks
+
+def get_interface_mac(interface):
+    addrs = netifaces.ifaddresses(interface)
+    return addrs[netifaces.AF_LINK][0]['addr']

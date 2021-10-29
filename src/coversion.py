@@ -19,6 +19,7 @@ def get_args():
 def main():
     networks = []
     args = get_args()
+    interface_mac = get_interface_mac(args.interface)
     scan_channels(args.interface, args.bssid, args.essid, args.channel, networks)
     
 if __name__ == "__main__":
