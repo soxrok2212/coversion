@@ -38,8 +38,8 @@ def scan_channels(interface, bssid, essid, chan, networks):
         try:
             change_channel(interface, channel)
             sniff(iface=interface, prn=packet_handler(networks), timeout=3)
-        except Exception:
-            pass
+        except Exception as e:
+            print('[-] could not sniff channel: {}'.format(e))
     return networks
 
 def get_interface_mac(interface):
