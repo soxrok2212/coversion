@@ -51,6 +51,7 @@ class Network():
         self.bssid = bssid
         self.essid = essid
         self.channel = channel
+        self.probed = False
         self.wps_info = {}
     
     def get_bssid(self):
@@ -64,6 +65,9 @@ class Network():
 
     def get_wps_info(self):
         return self.wps_info
+
+    def set_probed(self):
+        self.probed = True
 
     def probe_network(self, interface, interface_mac):
         src = mac2str(interface_mac)
