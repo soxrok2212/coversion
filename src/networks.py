@@ -6,7 +6,7 @@ from scapy.all import *
 def packet_handler(networks):
     def parse_packet(pkt):
         if pkt.haslayer(Dot11Beacon):
-            bssid = pkt[Dot11].addr2.replace(':', '')
+            bssid = pkt[Dot11].addr2
             essid = pkt[Dot11Elt].info.decode()
             try:
                 signal = pkt.dBm_AntSignal
@@ -76,6 +76,7 @@ class Network():
             /Dot11Elt(ID=1, info='\x82\x84\x8b\x96\x0c\x12\x18')\
             /Dot11Elt(ID=50, info='\x30\x48\x60\x6c')\
             /Dot11Elt(ID=3, info=chr(self.channel))
-        answer = srp1(pkt, iface=interface, verbose=0)
-        answer.show()
-
+        answer = srp1(pkt, iface=interface, verbose=0, timeout=2)
+        if answer:
+            answer.show()
+        return answer
