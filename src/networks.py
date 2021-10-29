@@ -2,7 +2,7 @@ import netifaces
 
 from scapy.all import *
 
-from utils import *
+from utils import change_channel
 
 class Network():
     def __init__(self, bssid, essid, channel):
