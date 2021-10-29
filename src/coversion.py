@@ -4,7 +4,6 @@ import argparse
 import time
 
 from networks import *
-from utils import *
 
 def get_args():
     parser = argparse.ArgumentParser(description='Coversion Argument Parser')
